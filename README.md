@@ -32,6 +32,7 @@ All keybindings are triggered after pressing `CTRL+a` (Leader key):
 
 |**Key**| **Action**|
 |:---:|:---:|
+|[| Copy Mode|
 |v| Split pane **horizontally**|
 |s| Split pane **vertically**|
 |q| Close current pane (with confirm)|
@@ -42,9 +43,12 @@ All keybindings are triggered after pressing `CTRL+a` (Leader key):
 |l| Move focus **right**|
 |k| Move focus **up**|
 |j| Move focus **down**|
-|r| Rotate panes counter-clockwise|
-|R| Rotate panes clockwise|
-|1-8| Switch to tab number (1–8)|
+|o| Rotate panes counter-clockwise|
+|O| Rotate panes clockwise|
+|r| Resize pane with `hjkl`|
+|e| Show Tab Navigator|
+|c| Rename Tab|
+|1-9| Switch to tab number (1–8)|
 
 📝 **Example: Press `CTRL+a` then `v` to split the pane horizontally.**
 
@@ -61,3 +65,7 @@ Closing the last pane doesn't ask for confirmation if running one of the followi
 ## 📁 File: wezterm.lua
 
 Place this configuration in your ~/.wezterm.lua or the appropriate config location for your OS.
+
+## Comments
+
+The configurations of this Wezterm is heavily influenced by a youtuber (forgot name sry) whose wezterm config I took as baseline. I adjusted a lot of keybindings too be more similar to standard tmux keybindings (still in progress). I mainly use Ubuntu for coding tasks. However, I had fun trying to make a NeoVim-Setup work on windows, which is why I ended up with some wezterm settings for powershell.
