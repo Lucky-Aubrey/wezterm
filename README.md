@@ -3,7 +3,7 @@
 This is a custom configuration for WezTerm – a GPU-accelerated terminal emulator and multiplexer.
 
 It includes a minimal UI, JetBrains Mono font, transparent window background, and extensive keybindings for pane and tab management using a `CTRL+a` leader key.
-
+![Wezterm with NeoVim](/images/screenshot.png)
 ***
 
 ## ⚙ Features
