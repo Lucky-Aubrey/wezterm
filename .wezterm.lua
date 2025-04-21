@@ -16,11 +16,64 @@ config.window_padding = {
 	bottom = 0,
 }
 
--- Font
+-- Fontsize
+config.font_size = 10.0
+
+-- Color scheme
 -- For example, changing the color scheme:
 config.color_scheme = "Tokyo Night"
-config.window_background_opacity = 0.8
+-- config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Vs Code Dark+ (Gogh)"
+-- config.color_scheme = "rose-pine"
+-- config.color_scheme = "Github Dark"
+
+-- Cyberdream (best with transparency)
+-- config.colors = {
+-- 	foreground = "#ffffff",
+-- 	background = "#16181a",
+--
+-- 	cursor_bg = "#ffffff",
+-- 	cursor_fg = "#16181a",
+-- 	cursor_border = "#ffffff",
+--
+-- 	selection_fg = "#ffffff",
+-- 	selection_bg = "#3c4048",
+--
+-- 	scrollbar_thumb = "#16181a",
+-- 	split = "#16181a",
+--
+-- 	ansi = { "#16181a", "#ff6e5e", "#5eff6c", "#f1ff5e", "#5ea1ff", "#bd5eff", "#5ef1ff", "#ffffff" },
+-- 	brights = { "#3c4048", "#ff6e5e", "#5eff6c", "#f1ff5e", "#5ea1ff", "#bd5eff", "#5ef1ff", "#ffffff" },
+-- 	indexed = { [16] = "#ffbd5e", [17] = "#ff6e5e" },
+-- }
+
+-- config.window_background_opacity = 1.0
 config.text_background_opacity = 0.3
+
+-- function for toggling opacity
+-- adjust these to the three levels you want:
+local opacity_levels = { 1.0, 0.8, 0.3, 0.1 }
+
+wezterm.on("toggle-opacity", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+
+	-- figure out what the current effective opacity is (default to 1.0)
+	local current = overrides.window_background_opacity or 1.0
+
+	-- find it in our list and pick the next one
+	local next_index = 1
+	for i, v in ipairs(opacity_levels) do
+		if math.abs(current - v) < 1e-3 then
+			next_index = (i % #opacity_levels) + 1
+			break
+		end
+	end
+
+	-- set up the override and apply it
+	overrides.window_background_opacity = opacity_levels[next_index]
+	window:set_config_overrides(overrides)
+end)
+
 config.front_end = "WebGpu" -- Dont know what this does
 -- config.window_close_confirmation = "AlwaysPrompt"
 config.default_workspace = "main"
@@ -28,7 +81,7 @@ config.scrollback_lines = 3000
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
-	-- saturation = 0.8,
+	saturation = 0.6,
 	brightness = 0.8,
 }
 
@@ -73,6 +126,12 @@ config.keys = {
 			end),
 		}),
 	},
+	-- Toggle opacity
+	{
+		key = "b",
+		mods = "LEADER",
+		action = wezterm.action.EmitEvent("toggle-opacity"),
+	},
 	-- Lastly, workspace (TODO: Make launcher f)
 	-- { key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 }
@@ -115,17 +174,17 @@ config.skip_close_confirmation_for_processes_named = {
 	"cmd.exe",
 	"pwsh.exe",
 	"powershell.exe",
+	"pwsh.exe",
 }
 
 -- Tab bar
--- I don't like the look of "fancy" tab bar
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = false
 
 -- platform specific settings
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	config.default_prog = { "powershell.exe" }
+	config.default_prog = { "pwsh.exe" }
 end
 
 -- Everything below here is copied from another repository TODO find out from who for contribution (i think it was a youtuber)
@@ -194,4 +253,5 @@ wezterm.on("update-status", function(window, pane)
 	}))
 end)
 -- and finally, return the configuration to wezterm
+
 return config

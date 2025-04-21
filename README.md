@@ -8,7 +8,7 @@ It includes a minimal UI, JetBrains Mono font, transparent window background, an
 
 ## ⚙ Features
 
-🎨 **Color Scheme**: Tokyo Night
+🎨 **Color Scheme**: Tokyo Night, Cyberdream
 
 🔠 **Font**: JetBrains Mono
 
@@ -16,9 +16,9 @@ It includes a minimal UI, JetBrains Mono font, transparent window background, an
 
 🔳 **Padding**: 0px on all sides
 
-💻 **Shell**: PowerShell (powershell.exe)
+💻 **Shell**: PowerShell7 (pswh.exe)
 
-🫧 **Opacity**: 80% background transparency
+🫧 **Opacity**: Shortcut for toggling between 1.0, 0.8, 0.3, 0.1
 
 ⌨️ **Leader Key**: `CTRL+a`
 
@@ -49,23 +49,20 @@ All keybindings are triggered after pressing `CTRL+a` (Leader key):
 |e| Show Tab Navigator|
 |c| Rename Tab|
 |1-9| Switch to tab number (1–8)|
+|b| Cycle between opacity levels|
 
 📝 **Example: Press `CTRL+a` then `v` to split the pane horizontally.**
 
 ***
 
-## 🧼 Skip Close Confirmation
-
-Closing the last pane doesn't ask for confirmation if running one of the following:
-
-    bash, sh, zsh, fish, tmux, nu, cmd.exe, pwsh.exe, powershell.exe
-
-***
 
 ## 📁 File: wezterm.lua
 
-Place this configuration in your ~/.wezterm.lua or the appropriate config location for your OS.
+Place this configuration in your ~/.wezterm.lua or ~/.config/wezterm/wezterm.lua.
 
 ## Comments
+* In my opinion Tokyo Night works better with opaque or little transparent background
+* Cyberdream works best with transparent background and nice wallpapers. E.g. darker themes. However, sometimes it is too distracting which is why I added a toggle key for the background opacity.
 
-The configurations of this Wezterm is heavily influenced by a youtuber (forgot name sry) whose wezterm config I took as baseline. I adjusted a lot of keybindings too be more similar to standard tmux keybindings (still in progress). I mainly use Ubuntu for coding tasks. However, I had fun trying to make a NeoVim-Setup work on windows, which is why I ended up with some wezterm settings for powershell.
+### History
+The configurations of my Wezterm setup is heavily influenced by a youtuber (forgot name sry) whose wezterm config I took as baseline. I adjusted a lot of keybindings too be more similar to standard tmux keybindings (still in progress). I mainly use Ubuntu for coding tasks. However, I had fun trying to make a NeoVim-Setup work on windows, which is why I ended up with some wezterm settings for powershell.
