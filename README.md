@@ -2,7 +2,7 @@
 
 This is a custom configuration for WezTerm – a GPU-accelerated terminal emulator and multiplexer.
 
-It includes a minimal UI, JetBrains Mono font, transparent window background, and extensive keybindings for pane and tab management using a `CTRL+a` leader key.
+It includes a minimal UI, JetBrains Mono font, transparent window background, and extensive keybindings for pane and tab management using a `CTRL+a` leader key. The colortheme is (Cyberdream)[https://github.com/scottmckendry/cyberdream.nvim]. The taskbar I use is [yasb](https://github.com/amnweb/yasb) for which you can find my config [here](https://github.com/Lucky-Aubrey/yasb-config).
 ![Wezterm with NeoVim](/images/screenshot.png)
 ***
 
